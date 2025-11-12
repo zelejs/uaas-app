@@ -22,6 +22,8 @@
         <skipStandalone>false</skipStandalone>
         <lombok.version>1.18.4</lombok.version>
         <uaas.version>5.0.0</uaas.version>
+        <jwt-core.version>0.1.3</jwt-core.version>
+        <perm-core.version>0.3.6</perm-core.version>
     </properties>
 
     <dependencies>
@@ -30,10 +32,22 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+
+<!-- auth -->
         <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>uaas</artifactId>
             <version>5.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>jwt-core</artifactId>
+            <version>${jwt-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>perm-core</artifactId>
+            <version>${perm-core.version}</version>
         </dependency>
 
 <!--crud -->
@@ -47,116 +61,7 @@
             <artifactId>crud-core</artifactId>
             <version>${crud-core.version}</version>
         </dependency>
-        <!-- Permission -->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>jwt-core</artifactId>
-            <version>${jwt-core.version}</version>
-        </dependency>
-
-<!--        swagger-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-
-        <!-- data source -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version> <!--old version 5.1.43-->
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- Undertow instead of tomcat -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-        
-        <!--springboot test-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-           <scope>test</scope>
-        </dependency>
-
-        <!--allow swagger support java 11 (above java9)-->
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>${jaxb-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb-impl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>${javax.activation.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
-        </dependency>        
+       
     </dependencies>
 
     <build>
