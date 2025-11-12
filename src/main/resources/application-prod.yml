@@ -287,19 +287,6 @@ apis:
   dosql:
     path: apis
 
-
-  # 验证码配置
-valid-code:
-  expiration-time: 300000 # 单位毫秒
-  length: 6 # 验证码的长度
-
-# 头像配置
-avatar:
-  file-path: images/avatar/ # 弃用
-  export-endpoint: "http://202.189.7.191:9000"
-  default-avatar-path: images/avatar/default-avatar.png
-
-
 # unicom:
 #   appKey: 12E689A06DD74FF7ADFF2ED9086D6365
 #   secret: DMRsOlzthNPmvpql

@@ -11,3 +11,4 @@ build/*
 logs/*
 *.jar*
 /config/
+.vscode/

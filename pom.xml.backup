@@ -88,22 +88,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.29</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
-                <version>1.7.25</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jul-to-slf4j</artifactId>
-                <version>1.7.25</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>1.7.25</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.validation</groupId>
@@ -115,11 +100,6 @@
                 <artifactId>jaxb-core</artifactId>
                 <version>3.0.2</version>
             </dependency>
-            <dependency>
-                <groupId>com.jfeat</groupId>
-                <artifactId>avatar</artifactId>
-                <version>1.0.0</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -127,7 +107,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <version>1.18.4</version>
         </dependency>
 
         <!-- dev, sidecar:dev-dependency to provide the ui -->
@@ -174,72 +154,163 @@
             <groupId>com.jfeat</groupId>
             <artifactId>field-config-industry</artifactId>
             <version>1.2.2</version>
-        </dependency>        
+        </dependency>
 
 <!-- auth, depends jwt-core, pwer-core -->
         <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>uaas</artifactId>
-            <version>5.0.0</version>
+            <version>${uaas.version}</version>
             <exclusions>
-                <!-- Remove uaas-app specific dependencies to match cloud-app exactly -->
+                <!-- Exclude conflicting versions to force our versions -->
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>banner-service</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>blacklist</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>cms</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>comment</artifactId>
+                    <groupId>com.fasterxml.jackson.datatype</groupId>
+                    <artifactId>jackson-datatype-jsr310</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>icon</artifactId>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>lc_low_auto_album</artifactId>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>lc_low_auto_page_style</artifactId>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>moments</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>star</artifactId>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>perm-url-service</artifactId>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- Dependencies to match cloud-app versions -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>crud-plus</artifactId>
+            <version>${crud-plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>jwt-core</artifactId>
+            <version>${jwt-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>perm-core</artifactId>
+            <version>${perm-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>uaas</artifactId>
+            <version>${uaas.version}</version>
+            <exclusions>
+                <!-- Exclude conflicting versions to force our versions -->
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.datatype</groupId>
+                    <artifactId>jackson-datatype-jsr310</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>user-account</artifactId>
-            <version>${user-account.version}</version>
-            <exclusions>
-                <!-- Remove uaas-app specific dependencies to match cloud-app exactly -->
-                <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>rss</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.jfeat</groupId>
-                    <artifactId>term-config</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>1.3.0</version>
         </dependency>
         <!-- <dependency>
             <groupId>com.jfeat</groupId>
@@ -248,7 +319,22 @@
         </dependency> -->
 
 
-<!-- oa core - removed to match cloud-app -->
+<!-- oa core -->
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>eav</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>workflow</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+          <groupId>com.jfeat</groupId>
+          <artifactId>workflow-category</artifactId>
+          <version>3.0.0</version>
+        </dependency>
         <!-- <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>team</artifactId>
@@ -256,15 +342,15 @@
         </dependency> -->
 
 
-<!-- saas - removed to match cloud-app -->
-        <!-- <dependency>
+<!-- saas -->
+        <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>menu</artifactId>
             <version>5.0.0</version>
-        </dependency> -->
+        </dependency>
 
-<!-- cms - removed to match cloud-app -->
-        <!-- <dependency>
+<!-- cms -->
+        <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>cms</artifactId>
             <version>1.3.0</version>
@@ -273,7 +359,7 @@
             <groupId>com.jfeat</groupId>
             <artifactId>moments</artifactId>
             <version>1.0.0</version>
-        </dependency> -->
+        </dependency>
         <!-- <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>feedback</artifactId>
@@ -296,7 +382,7 @@
             <artifactId>zero-io-pdf</artifactId>
             <version>1.1.0</version>
         </dependency> -->
-    
+
 <!-- lowcode core -->
         <dependency>
             <groupId>com.jfeat</groupId>
@@ -308,7 +394,7 @@
             <groupId>com.jfeat</groupId>
             <artifactId>zero-io-sql</artifactId>
             <version>1.0.0</version>
-        </dependency>  
+        </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>zero-io-json</artifactId>
@@ -329,34 +415,47 @@
             <version>1.0.0</version>
         </dependency>
 
-
-<!-- rabbitMQ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-<!-- feign, support @EnableFeignClients -->
+        <!-- Feign client support -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.3.5.RELEASE</version>
         </dependency>
-
-<!-- commons -->
+ 
+        <!-- redis -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>        
 
-<!-- jackson 核心模块 -->
+        <!-- Spring Boot starters (matching cloud-app) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.6.RELEASE</version>
+            <exclusions>
+                <!-- Exclude default Jackson versions to use our custom versions -->
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.datatype</groupId>
+                    <artifactId>jackson-datatype-jsr310</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Jackson dependencies to match cloud-app versions -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -378,8 +477,7 @@
             <version>2.10.5</version>
         </dependency>
 
-
-<!-- swagger -->
+        <!-- Swagger dependencies to match cloud-app versions -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -391,131 +489,17 @@
                     <artifactId>mapstruct</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>        
-        <!-- nanoid 依赖，替代UUID -->
-        <dependency>
-            <groupId>com.aventrix.jnanoid</groupId>
-            <artifactId>jnanoid</artifactId>
-            <version>2.0.0</version>
         </dependency>
-
-        <!-- Force avatar version to match cloud-app -->
+        <!-- Force specific swagger component versions -->
         <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>avatar</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <!-- Force SLF4J bridge versions to match cloud-app -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.25</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.2</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-
-        <!-- Add cloud-app unique tool dependencies for complete sync -->
-        <!-- Note: These are private/internal dependencies, may need manual JAR installation -->
-        <dependency>
-            <groupId>org.benf</groupId>
-            <artifactId>cfr</artifactId>
-            <version>0.151</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-cli</groupId>
-            <artifactId>commons-cli</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <!-- Add remaining cloud-app specific private dependencies -->
-        <!-- Temporarily removed for troubleshooting
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>dev-dependency</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>feedback</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>sign-sdk</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        -->
-
-        <!-- Add final missing cloud-app dependencies for 100% sync -->
-        <!-- Temporarily removed for troubleshooting
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>document-manager</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>eav</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>menu</artifactId>
-            <version>5.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-            <version>1.5.6.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-el</artifactId>
-            <version>8.5.16</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>virtualForm</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>workflow</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>workflow-attachment</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>workflow-category</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-model</artifactId>
-            <version>3.6.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-lang</artifactId>
-            <version>1.4.0</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.9</version>
         </dependency>
     </dependencies>
 
