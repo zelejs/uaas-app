@@ -1,0 +1,11 @@
+@endpoint = http://localhost:8080
+
+
+### 系统用户登录
+POST {{endpoint}}/api/sys/oauth/login HTTP/1.1
+content-type: application/json
+
+{
+    "account": "admin",
+    "password": "111111"
+}
