@@ -20,7 +20,7 @@
 
     <properties>
         <skipStandalone>false</skipStandalone>
-        <lombok.version>1.18.4</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <uaas.version>5.0.0</uaas.version>
         <jwt-core.version>0.1.3</jwt-core.version>
         <perm-core.version>0.3.6</perm-core.version>
@@ -49,19 +49,6 @@
             <artifactId>perm-core</artifactId>
             <version>${perm-core.version}</version>
         </dependency>
-
-<!--crud -->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>crud-plus</artifactId>
-            <version>${crud-plus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>crud-core</artifactId>
-            <version>${crud-core.version}</version>
-        </dependency>
-       
     </dependencies>
 
     <build>
